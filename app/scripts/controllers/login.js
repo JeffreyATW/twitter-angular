@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twitterAngularApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($window, $scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -22,5 +22,9 @@ angular.module('twitterAngularApp')
           $scope.errors.other = err.message;
         });
       }
+    };
+
+    $scope.twitterAuth = function () {
+      $window.location.href = '/api/auth/twitter';
     };
   });

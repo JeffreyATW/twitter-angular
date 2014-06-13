@@ -3,11 +3,22 @@
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
+    nconf = require('nconf'),
     mongoose = require('mongoose');
 
 /**
  * Main application file
  */
+
+//
+// Setup nconf to use (in-order):
+//   1. Command-line arguments
+//   2. Environment variables
+//   3. A file located at 'path/to/config.json'
+//
+nconf.argv()
+     .env()
+     .file({ file: './config.json' });
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
