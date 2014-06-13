@@ -1,33 +1,20 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name twitterAngularApp
- * @description
- * # twitterAngularApp
- *
- * Main module of the application.
- */
-angular
-  .module('twitterAngularApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+angular.module('twitterAngularApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute'
+])
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'partials/main',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+      
+    $locationProvider.html5Mode(true);
   });
